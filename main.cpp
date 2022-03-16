@@ -27,26 +27,10 @@
 class pcout : public std::stringstream
 {
 
-    static inline
-    std::mutex M;
+    static inline  std::mutex M;
 
 public:
 
-   /* pcout()
-    {
-    };*/
-
-   /* template < typename T>
-    pcout& operator << (T anything )
-    {
-        //M.lock();
-        *this<<anything;
-        return *this;
-    }
-*/
-    // friend pcout& operator << (std::ostream& (*f)(std::ostream&),  pcout& p);
-
-   // friend std::ostream& operator << ( std::ostream& out, pcout& p);
 
     ~pcout(){
         //std::lock_guard <std::mutex> i{M};
@@ -56,20 +40,6 @@ public:
         M.unlock();
     };
 } pcout;
-/*
-class pcout& operator << (std::ostream& (*f)(std::ostream&),  class pcout& p)
-{
-    p<<f;
-    return p;
-}*/
-/*
-std::ostream& operator << ( std::ostream& out,class pcout& p)
-{
-    out<<p;
-    p.M.unlock();
-    return out;
-}
-*/
 
 
 
